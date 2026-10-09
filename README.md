@@ -17,7 +17,7 @@ git clone --branch dev https://github.com/Cyber-preacher/kavazi-method.git
 cd kavazi-method
 ```
 
-The first tagged release, **0.1.0**, is being prepared; publication and its download are pending. The planned [v0.1.0 release page](https://github.com/Cyber-preacher/kavazi-method/releases/tag/v0.1.0) will provide `kavazi-method-0.1.0.zip`. Once published, download that asset, extract it, and open the extracted directory containing this README. The same setup commands below work from either the source checkout or the extracted package.
+For the packaged **0.1.0** version, download `kavazi-method-0.1.0.zip` from the [release page](https://github.com/Cyber-preacher/kavazi-method/releases/tag/v0.1.0). Extract it and open the directory containing this README. The same setup commands below work from either the source checkout or the extracted package.
 
 ## Start in your project
 

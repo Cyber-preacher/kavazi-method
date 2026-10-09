@@ -1,4 +1,4 @@
-# Phase 03 — Protected branch workflow and CI
+# Phase 03 — Protected branch workflow and first release
 
 [Master plan](../../MASTER_IMPLEMENTATION_PLAN.md) · [Methods](METHODOLOGY.md) · [Evidence](EVIDENCE.md). `.kavazi/state.json` owns status and next action.
 

@@ -2,9 +2,9 @@
 
 Record user-visible changes here. Release dates and tags describe publication that actually occurred.
 
-## Unreleased
+## 0.1.0
 
-The first release, `0.1.0`, is being prepared. The [planned release page](https://github.com/Cyber-preacher/kavazi-method/releases/tag/v0.1.0) and `kavazi-method-0.1.0.zip` download remain pending until publication is recorded here.
+First release of Kavazi Method. [Release notes and download](https://github.com/Cyber-preacher/kavazi-method/releases/tag/v0.1.0).
 
 ### Added
 
