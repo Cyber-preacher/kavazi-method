@@ -114,9 +114,9 @@ Python 3.10+ and standard-library runtime keep local adoption independent of ser
 
 ## Continuous integration and release records
 
-The GitHub workflow declares Linux checks on Python 3.10 and 3.13, runs the suite and record validation, and builds the archive. Third-party actions use commit IDs verified from their upstream tags, with Dependabot configured to propose updates. This is configured validation; actual remote execution remains an observed release prerequisite.
+The GitHub workflow declares Linux checks on Python 3.10 and 3.13, runs the suite and record validation, and builds the archive. Third-party actions use commit IDs verified from their upstream tags, with Dependabot configured to propose updates. Phase 03 observed successful hosted push and PR validation on both branch targets, and a failing invalid master route. Its evidence preserves the check-name collision, correction, and host-evaluation limitation.
 
-The manifest and runtime identify version 0.1.0. The changelog labels it unreleased until a real publication occurs. The local archive includes all public-guide links and MIT notices; project-specific records, tests, and the builder remain source-checkout resources. `CONTRIBUTING.md` documents version reconciliation, local verification, hosting setup, and release publication as distinct steps.
+The manifest and runtime identify version 0.1.0. The changelog records the initial 0.1.0 release; Phase 03 verifies the published tag and downloaded assets. The local archive includes all public-guide links and MIT notices; project-specific records, tests, and the builder remain source-checkout resources. `CONTRIBUTING.md` documents version reconciliation, local verification, hosting setup, and release publication as distinct steps.
 
 ### Protected branches
 
