@@ -1,0 +1,4 @@
+interface:
+  display_name: "Kavazi Setup"
+  short_description: "Set up Kavazi around your project's existing work"
+  default_prompt: "Use $kavazi-setup to capture my brief and adopt Kavazi in this repository, preserving existing work and using autonomous development unless I request human checkpoints."

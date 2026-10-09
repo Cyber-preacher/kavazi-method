@@ -1,0 +1,82 @@
+name: Check PR route
+
+on:
+  pull_request_target:
+    branches: [dev, master]
+    types: [opened, synchronize, reopened, edited, ready_for_review]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pr-route-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  route:
+    name: PR route
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    steps:
+      # This runs in the trusted base repository. Never check out or execute PR code
+      # here, and never interpolate PR text into a script or expression.
+      - name: Check the source and destination branches
+        shell: python
+        run: |
+          import json
+          import os
+          from pathlib import Path
+          import sys
+
+          def require_object(value):
+              if not isinstance(value, dict):
+                  raise ValueError("Required PR or repository metadata is missing.")
+              return value
+
+          def require_text(value):
+              if not isinstance(value, str) or not value:
+                  raise ValueError("Required branch or repository metadata is missing.")
+              return value
+
+          def repository_id(value):
+              if type(value) is not int or value <= 0:
+                  raise ValueError("Repository identity is missing or invalid.")
+              return value
+
+          try:
+              if os.environ.get("GITHUB_EVENT_NAME") != "pull_request_target":
+                  raise ValueError("This gate requires a trusted pull_request_target event.")
+              event = require_object(json.loads(Path(os.environ["GITHUB_EVENT_PATH"]).read_text(encoding="utf-8")))
+              repository = require_object(event.get("repository"))
+              current_id = repository_id(repository.get("id"))
+              current_name = require_text(repository.get("full_name"))
+              if str(current_id) != os.environ.get("GITHUB_REPOSITORY_ID") or current_name != os.environ.get("GITHUB_REPOSITORY"):
+                  raise ValueError("Event repository does not match the running repository.")
+
+              pull = require_object(event.get("pull_request"))
+              head = require_object(pull.get("head"))
+              base = require_object(pull.get("base"))
+              head_repo = require_object(head.get("repo"))
+              base_repo = require_object(base.get("repo"))
+              head_id = repository_id(head_repo.get("id"))
+              base_id = repository_id(base_repo.get("id"))
+              head_name = require_text(head_repo.get("full_name"))
+              base_name = require_text(base_repo.get("full_name"))
+              head_ref = require_text(head.get("ref"))
+              base_ref = require_text(base.get("ref"))
+              require_text(head.get("sha"))
+              require_text(base.get("sha"))
+              if base_id != current_id or base_name != current_name:
+                  raise ValueError("PR destination does not match the running repository.")
+
+              if base_ref == "dev":
+                  print("PR route accepted: contributor branch to dev.")
+              elif base_ref == "master" and head_ref == "dev" and head_id == current_id and head_name == current_name:
+                  print("PR route accepted: same-repository dev to master.")
+              else:
+                  raise ValueError("Target dev for contributions; master accepts only this repository's dev branch.")
+          except (KeyError, OSError, UnicodeError, ValueError) as error:
+              # Exceptions contain fixed policy messages or local file diagnostics,
+              # never PR titles, branch names, or other contributor-controlled text.
+              print("::error::PR route validation failed. " + str(error))
+              sys.exit(1)

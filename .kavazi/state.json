@@ -1,0 +1,603 @@
+{
+  "schema_version": 1,
+  "phases": [
+    {
+      "number": 1,
+      "title": "Plug-and-play local MVP",
+      "status": "complete",
+      "next_action": "Derive only the immediately next phase from accepted evidence.",
+      "required_checks": [
+        "regressions",
+        "structure"
+      ],
+      "closure": {
+        "baseline": "81753a119259a954be0e3870424d1beea6712ad4cea36586b0746cbda1b1385f",
+        "acceptance": {
+          "evidence": "P01-E013",
+          "summary": "Accepted the revised local plug-and-play delivery: clear human and agent routes, complete ordered design chain, readable templates and CLI, preserved input/history, autonomous and actual-human checkpoint contracts."
+        },
+        "checks": [
+          {
+            "id": "regressions",
+            "result": "passed",
+            "evidence": "P01-E013"
+          },
+          {
+            "id": "structure",
+            "result": "passed",
+            "evidence": "P01-E013"
+          }
+        ],
+        "reviews": [
+          {
+            "kind": "phase",
+            "reviewer": "Root, protocol_review, and independent_review initial review rounds (actual model settings unobserved)",
+            "fresh": false,
+            "coverage": [
+              "Entire delivered Phase 01 tooling, target/source preservation, inputs, skills, templates, packages, contracts, and interactions; chronological rounds recorded in P01-E003"
+            ],
+            "findings": [
+              {
+                "id": "F001",
+                "status": "open",
+                "evidence": "P01-E003"
+              },
+              {
+                "id": "F002",
+                "status": "open",
+                "evidence": "P01-E003"
+              },
+              {
+                "id": "F003",
+                "status": "open",
+                "evidence": "P01-E003"
+              },
+              {
+                "id": "F004",
+                "status": "open",
+                "evidence": "P01-E003"
+              },
+              {
+                "id": "F005",
+                "status": "open",
+                "evidence": "P01-E003"
+              },
+              {
+                "id": "F006",
+                "status": "open",
+                "evidence": "P01-E003"
+              },
+              {
+                "id": "F007",
+                "status": "open",
+                "evidence": "P01-E003"
+              },
+              {
+                "id": "F008",
+                "status": "open",
+                "evidence": "P01-E003"
+              },
+              {
+                "id": "F009",
+                "status": "open",
+                "evidence": "P01-E003"
+              },
+              {
+                "id": "F010",
+                "status": "open",
+                "evidence": "P01-E003"
+              },
+              {
+                "id": "F011",
+                "status": "open",
+                "evidence": "P01-E003"
+              },
+              {
+                "id": "F012",
+                "status": "open",
+                "evidence": "P01-E003"
+              },
+              {
+                "id": "F013",
+                "status": "open",
+                "evidence": "P01-E003"
+              },
+              {
+                "id": "F014",
+                "status": "open",
+                "evidence": "P01-E003"
+              },
+              {
+                "id": "F015",
+                "status": "open",
+                "evidence": "P01-E003"
+              },
+              {
+                "id": "F016",
+                "status": "open",
+                "evidence": "P01-E003"
+              },
+              {
+                "id": "F017",
+                "status": "open",
+                "evidence": "P01-E003"
+              },
+              {
+                "id": "F018",
+                "status": "open",
+                "evidence": "P01-E003"
+              },
+              {
+                "id": "F019",
+                "status": "open",
+                "evidence": "P01-E003"
+              },
+              {
+                "id": "F020",
+                "status": "open",
+                "evidence": "P01-E003"
+              },
+              {
+                "id": "F021",
+                "status": "open",
+                "evidence": "P01-E003"
+              },
+              {
+                "id": "F022",
+                "status": "open",
+                "evidence": "P01-E003"
+              },
+              {
+                "id": "F023",
+                "status": "open",
+                "evidence": "P01-E003"
+              }
+            ],
+            "refactoring": "Shared Markdown/display/preflight helpers and explicit source walks repair demonstrated defects while retaining accepted behavior; preserve review chronology and failed observations.",
+            "evidence": "P01-E003"
+          },
+          {
+            "kind": "phase",
+            "reviewer": "independent_review fresh full-scope and reconciled handoff review (actual model settings unobserved)",
+            "fresh": true,
+            "coverage": [
+              "Core, Brief, Architecture, Methodology, Technical Core, Master Plan and current phase package",
+              "All CLI/core/onboarding/builder/wrapper code, schemas, transitions, filesystem preservation and malformed input reproducers",
+              "Release and historical skills, references, eight templates, all tests, manifest and UI metadata, README, CI, installed and extracted artifact workflows",
+              "F001-F023 resolutions, required checks, current archive identity, forward evaluator results, documentation reconciliation and scoped limitations"
+            ],
+            "findings": [
+              {
+                "id": "F001",
+                "status": "resolved",
+                "evidence": "P01-E009"
+              },
+              {
+                "id": "F002",
+                "status": "resolved",
+                "evidence": "P01-E009"
+              },
+              {
+                "id": "F003",
+                "status": "resolved",
+                "evidence": "P01-E009"
+              },
+              {
+                "id": "F004",
+                "status": "resolved",
+                "evidence": "P01-E009"
+              },
+              {
+                "id": "F005",
+                "status": "resolved",
+                "evidence": "P01-E009"
+              },
+              {
+                "id": "F006",
+                "status": "resolved",
+                "evidence": "P01-E009"
+              },
+              {
+                "id": "F007",
+                "status": "resolved",
+                "evidence": "P01-E009"
+              },
+              {
+                "id": "F008",
+                "status": "resolved",
+                "evidence": "P01-E009"
+              },
+              {
+                "id": "F009",
+                "status": "resolved",
+                "evidence": "P01-E009"
+              },
+              {
+                "id": "F010",
+                "status": "resolved",
+                "evidence": "P01-E009"
+              },
+              {
+                "id": "F011",
+                "status": "resolved",
+                "evidence": "P01-E009"
+              },
+              {
+                "id": "F012",
+                "status": "resolved",
+                "evidence": "P01-E009"
+              },
+              {
+                "id": "F013",
+                "status": "resolved",
+                "evidence": "P01-E009"
+              },
+              {
+                "id": "F014",
+                "status": "resolved",
+                "evidence": "P01-E009"
+              },
+              {
+                "id": "F015",
+                "status": "resolved",
+                "evidence": "P01-E009"
+              },
+              {
+                "id": "F016",
+                "status": "resolved",
+                "evidence": "P01-E009"
+              },
+              {
+                "id": "F017",
+                "status": "resolved",
+                "evidence": "P01-E009"
+              },
+              {
+                "id": "F018",
+                "status": "resolved",
+                "evidence": "P01-E009"
+              },
+              {
+                "id": "F019",
+                "status": "resolved",
+                "evidence": "P01-E009"
+              },
+              {
+                "id": "F020",
+                "status": "resolved",
+                "evidence": "P01-E009"
+              },
+              {
+                "id": "F021",
+                "status": "resolved",
+                "evidence": "P01-E009"
+              },
+              {
+                "id": "F022",
+                "status": "resolved",
+                "evidence": "P01-E009"
+              },
+              {
+                "id": "F023",
+                "status": "resolved",
+                "evidence": "P01-E009"
+              }
+            ],
+            "refactoring": "Observed repairs were justified and verified. Fresh full-scope review found no remaining actionable defect and no additional refactor was warranted.",
+            "evidence": "P01-E009"
+          },
+          {
+            "kind": "phase",
+            "reviewer": "Root and reader_review editorial inspection rounds (actual model settings unobserved)",
+            "fresh": false,
+            "coverage": [
+              "Full delivered Phase 01, current and historical instruction routes, document ownership, evidence records, templates, generated arrival, runtime and package interactions"
+            ],
+            "findings": [
+              {
+                "id": "F024",
+                "status": "open",
+                "evidence": "P01-E012"
+              },
+              {
+                "id": "F025",
+                "status": "open",
+                "evidence": "P01-E012"
+              },
+              {
+                "id": "F026",
+                "status": "open",
+                "evidence": "P01-E012"
+              }
+            ],
+            "refactoring": "Remove competing active-looking instructions, correct technical record ownership, and repair the duplicated evidence identifier; no unrelated algorithmic rewrite warranted.",
+            "evidence": "P01-E012"
+          },
+          {
+            "kind": "phase",
+            "reviewer": "reader_review fresh full-scope and final reconciled handoff review (actual model settings unobserved)",
+            "fresh": true,
+            "coverage": [
+              "README, AGENTS, checkout Core, brief, all four masters and complete Phase 01 package, current compatibility entry and preserved history",
+              "Main and setup skills, all references, eight templates, three UI metadata files, documented and generated setup routes",
+              "CLI, onboarding, validator, wrapper, builder, four test files, manifest, CI and config/state/closure/package interactions",
+              "F001-F026 resolutions, actual required checks, unique evidence references, final baseline, exact distributed resources and independent installed walkthrough"
+            ],
+            "findings": [
+              {
+                "id": "F001",
+                "status": "resolved",
+                "evidence": "P01-E009"
+              },
+              {
+                "id": "F002",
+                "status": "resolved",
+                "evidence": "P01-E009"
+              },
+              {
+                "id": "F003",
+                "status": "resolved",
+                "evidence": "P01-E009"
+              },
+              {
+                "id": "F004",
+                "status": "resolved",
+                "evidence": "P01-E009"
+              },
+              {
+                "id": "F005",
+                "status": "resolved",
+                "evidence": "P01-E009"
+              },
+              {
+                "id": "F006",
+                "status": "resolved",
+                "evidence": "P01-E009"
+              },
+              {
+                "id": "F007",
+                "status": "resolved",
+                "evidence": "P01-E009"
+              },
+              {
+                "id": "F008",
+                "status": "resolved",
+                "evidence": "P01-E009"
+              },
+              {
+                "id": "F009",
+                "status": "resolved",
+                "evidence": "P01-E009"
+              },
+              {
+                "id": "F010",
+                "status": "resolved",
+                "evidence": "P01-E009"
+              },
+              {
+                "id": "F011",
+                "status": "resolved",
+                "evidence": "P01-E009"
+              },
+              {
+                "id": "F012",
+                "status": "resolved",
+                "evidence": "P01-E009"
+              },
+              {
+                "id": "F013",
+                "status": "resolved",
+                "evidence": "P01-E009"
+              },
+              {
+                "id": "F014",
+                "status": "resolved",
+                "evidence": "P01-E009"
+              },
+              {
+                "id": "F015",
+                "status": "resolved",
+                "evidence": "P01-E009"
+              },
+              {
+                "id": "F016",
+                "status": "resolved",
+                "evidence": "P01-E009"
+              },
+              {
+                "id": "F017",
+                "status": "resolved",
+                "evidence": "P01-E009"
+              },
+              {
+                "id": "F018",
+                "status": "resolved",
+                "evidence": "P01-E009"
+              },
+              {
+                "id": "F019",
+                "status": "resolved",
+                "evidence": "P01-E009"
+              },
+              {
+                "id": "F020",
+                "status": "resolved",
+                "evidence": "P01-E009"
+              },
+              {
+                "id": "F021",
+                "status": "resolved",
+                "evidence": "P01-E009"
+              },
+              {
+                "id": "F022",
+                "status": "resolved",
+                "evidence": "P01-E009"
+              },
+              {
+                "id": "F023",
+                "status": "resolved",
+                "evidence": "P01-E009"
+              },
+              {
+                "id": "F024",
+                "status": "resolved",
+                "evidence": "P01-E013"
+              },
+              {
+                "id": "F025",
+                "status": "resolved",
+                "evidence": "P01-E013"
+              },
+              {
+                "id": "F026",
+                "status": "resolved",
+                "evidence": "P01-E013"
+              }
+            ],
+            "refactoring": "Concrete instruction duplication, ownership, and evidence-heading defects are corrected. Full runtime and integration inspection found no additional justified algorithmic refactor.",
+            "evidence": "P01-E013"
+          }
+        ],
+        "documentation": {
+          "evidence": "P01-E013",
+          "summary": "Brief, Core, arrival, masters, phase plan/methodology/evidence, current skill and historical routing reconciled and independently reviewed against the final baseline."
+        }
+      }
+    },
+    {
+      "number": 2,
+      "title": "Open-source release preparation",
+      "status": "complete",
+      "next_action": "Derive only the immediately next phase from accepted evidence.",
+      "required_checks": [
+        "regressions",
+        "structure"
+      ],
+      "closure": {
+        "baseline": "8551b9e53481715a855a6146ddf3b809ee9e09ef2728c85e0180fb3155238ab2",
+        "acceptance": {
+          "evidence": "P02-E005",
+          "summary": "Accepted MIT licensing with Copyright (c) 2026 David Kavazi, organized public source and preserved history, contribution/security/change guidance, preserved target-project licenses, and the verified 26-member portable archive. Local preparation is complete; remote hosting, CI execution, and publication are unobserved."
+        },
+        "checks": [
+          {
+            "id": "regressions",
+            "result": "passed",
+            "evidence": "P02-E005"
+          },
+          {
+            "id": "structure",
+            "result": "passed",
+            "evidence": "P02-E005"
+          }
+        ],
+        "reviews": [
+          {
+            "kind": "phase",
+            "reviewer": "Root, oss_package, and oss_audit initial implementation and full-scope review rounds; actual model and effort settings unobserved",
+            "fresh": false,
+            "coverage": [
+              "All public, active, historical, and project documents; both phase packages; user requirements and reconciled handoff evidence",
+              "MIT notices, manifest, main/setup skill instructions, metadata, references, eight templates, and source/archive navigation",
+              "Notice preflight, package builder, CLI, onboarding, source/installed transitions, and inherited path/state/snapshot/closure mechanisms",
+              "All regression tests and fixtures; generated commands, target preservation, missing-notice refusal, deterministic archives, and extracted/standalone adoption",
+              "CI and Dependabot configuration, issue and PR templates, artifact boundaries, and unobserved hosting/platform limits"
+            ],
+            "findings": [
+              {
+                "id": "F027",
+                "status": "open",
+                "evidence": "P02-E004"
+              },
+              {
+                "id": "F028",
+                "status": "open",
+                "evidence": "P02-E004"
+              },
+              {
+                "id": "F029",
+                "status": "open",
+                "evidence": "P02-E004"
+              }
+            ],
+            "refactoring": "A shared notice-format helper prevents installer/builder drift. Explicit source selection fixes demonstrated checkout transition failures. No broader runtime restructuring was justified.",
+            "evidence": "P02-E004"
+          },
+          {
+            "kind": "phase",
+            "reviewer": "oss_audit initial reconciled-handoff inspection; actual model and effort settings unobserved",
+            "fresh": false,
+            "coverage": [
+              "All public, active, historical, and project documents; both phase packages; user requirements and reconciled handoff evidence",
+              "MIT notices, manifest, main/setup skill instructions, metadata, references, eight templates, and source/archive navigation",
+              "Notice preflight, package builder, CLI, onboarding, source/installed transitions, and inherited path/state/snapshot/closure mechanisms",
+              "All regression tests and fixtures; generated commands, target preservation, missing-notice refusal, deterministic archives, and extracted/standalone adoption",
+              "CI and Dependabot configuration, issue and PR templates, artifact boundaries, and unobserved hosting/platform limits"
+            ],
+            "findings": [
+              {
+                "id": "F030",
+                "status": "open",
+                "evidence": "P02-E005"
+              }
+            ],
+            "refactoring": "Correct the negative-case evidence attribution and checked handoff wording; no behavior change or algorithmic refactor is required.",
+            "evidence": "P02-E005"
+          },
+          {
+            "kind": "phase",
+            "reviewer": "oss_audit fresh full-scope review and final reconciled-handoff confirmation; actual model and effort settings unobserved",
+            "fresh": true,
+            "coverage": [
+              "All public, active, historical, and project documents; both phase packages; user requirements and reconciled handoff evidence",
+              "MIT notices, manifest, main/setup skill instructions, metadata, references, eight templates, and source/archive navigation",
+              "Notice preflight, package builder, CLI, onboarding, source/installed transitions, and inherited path/state/snapshot/closure mechanisms",
+              "All regression tests and fixtures; generated commands, target preservation, missing-notice refusal, deterministic archives, and extracted/standalone adoption",
+              "CI and Dependabot configuration, issue and PR templates, artifact boundaries, and unobserved hosting/platform limits"
+            ],
+            "findings": [
+              {
+                "id": "F027",
+                "status": "resolved",
+                "evidence": "P02-E005"
+              },
+              {
+                "id": "F028",
+                "status": "resolved",
+                "evidence": "P02-E005"
+              },
+              {
+                "id": "F029",
+                "status": "resolved",
+                "evidence": "P02-E005"
+              },
+              {
+                "id": "F030",
+                "status": "resolved",
+                "evidence": "P02-E005"
+              }
+            ],
+            "refactoring": "Notice-helper reuse, source-aware command rendering, and precise evidence resolve the demonstrated defects. Complete phase and inherited integration review found no additional warranted algorithmic refactor or actionable finding.",
+            "evidence": "P02-E005"
+          }
+        ],
+        "documentation": {
+          "evidence": "P02-E005",
+          "summary": "Brief, Core and agent arrival, architecture, methods, Technical Core, master plan, Phase 02 plan/methodology/evidence, public guidance, archive navigation, and historical routing are reconciled and independently reviewed. Phase 01 acceptance and dated evidence remain historical; Phase 03 has no package."
+        }
+      }
+    },
+    {
+      "number": 3,
+      "title": "Protected branch workflow and CI",
+      "status": "planned",
+      "next_action": "Prepare and verify GitHub branch rules, CI, and public source publication.",
+      "required_checks": [
+        "regressions",
+        "structure"
+      ],
+      "closure": null
+    }
+  ]
+}

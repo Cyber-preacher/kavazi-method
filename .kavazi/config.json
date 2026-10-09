@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "method_version": "0.1.0",
+  "project": "Kavazi Method",
+  "paths": {
+    "core": "CORE_KAVAZI_METHOD.md",
+    "brief": "docs/PROJECT_BRIEF.md",
+    "architecture": "docs/MASTER_ARCHITECTURE.md",
+    "methodology": "docs/MASTER_METHODOLOGY.md",
+    "technical_core": "docs/MASTER_TECHNICAL_CORE.md",
+    "master_plan": "docs/MASTER_IMPLEMENTATION_PLAN.md",
+    "phases": "docs/phases"
+  },
+  "execution": {"mode": "autonomous"},
+  "checks": [
+    {"id": "regressions", "command": ["python3", "-m", "unittest", "discover", "-s", "tests", "-v"]},
+    {"id": "structure", "command": ["python3", "kavazi.py", "check", "--repo", "."]}
+  ]
+}

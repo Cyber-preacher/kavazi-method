@@ -1,0 +1,4 @@
+interface:
+  display_name: "Kavazi Method"
+  short_description: "Carry a project brief into code through reviewed phases"
+  default_prompt: "Use $kavazi-method to turn my brief into project design and working implementation through reviewed phases, continuing autonomously unless I request human checkpoints."

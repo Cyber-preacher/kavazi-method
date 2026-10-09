@@ -1,0 +1,15 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "kavazi-method",
+  "version": "0.1.0",
+  "description": "Turn brief or detailed input into a technical design and develop through reviewed phases, autonomously or with human checkpoints.",
+  "extensions": {
+    "com.openai": {
+      "onboardingSkill": "./skills/kavazi-setup/SKILL.md"
+    }
+  },
+  "license": "MIT",
+  "author": {
+    "name": "David Kavazi"
+  }
+}

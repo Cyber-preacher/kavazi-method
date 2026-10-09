@@ -1,0 +1,16 @@
+{
+  "name": "Kavazi reviewed workflow events",
+  "enforcement": "active",
+  "rules": [
+    {
+      "type": "restrict_action_events",
+      "parameters": {
+        "allowed_events": [
+          "push",
+          "pull_request",
+          "pull_request_target"
+        ]
+      }
+    }
+  ]
+}
