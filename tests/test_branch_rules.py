@@ -52,7 +52,8 @@ class BranchRulesTests(unittest.TestCase):
                     "required_status_checks",
                 })
 
-    def test_ci_and_route_are_both_mandatory_from_github_actions(self):
+    def test_required_github_actions_contexts_are_distinct_for_each_target(self):
+        contexts = {}
         for branch in ("dev", "master"):
             with self.subTest(branch=branch):
                 rules = {rule["type"]: rule for rule in self.policies[branch]["rules"]}
@@ -60,9 +61,15 @@ class BranchRulesTests(unittest.TestCase):
                 self.assertTrue(checks["strict_required_status_checks_policy"])
                 self.assertFalse(checks["do_not_enforce_on_create"])
                 self.assertEqual(checks["required_status_checks"], [
-                    {"context": "CI", "integration_id": 15368},
-                    {"context": "PR route", "integration_id": 15368},
+                    {"context": f"CI / {branch}", "integration_id": 15368},
+                    {"context": f"PR route / {branch}", "integration_id": 15368},
                 ])
+                contexts[branch] = {
+                    check["context"] for check in checks["required_status_checks"]
+                }
+        # One commit can appear in PRs targeting both branches. Shared context
+        # names let the result for one destination affect the other (F031).
+        self.assertTrue(contexts["dev"].isdisjoint(contexts["master"]))
 
     def test_long_lived_branches_keep_ancestry_without_self_approval(self):
         for branch in ("dev", "master"):
