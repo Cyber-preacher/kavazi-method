@@ -38,7 +38,7 @@ jobs:
         run: python scripts/build_plugin.py --output dist/kavazi-method-0.1.0.zip
 
   ci:
-    name: CI
+    name: CI / ${{ github.base_ref || github.ref_name }}
     needs: validate
     if: ${{ always() }}
     runs-on: ubuntu-latest

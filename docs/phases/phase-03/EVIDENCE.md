@@ -67,3 +67,37 @@ Actual reviewer model and effort settings are unobserved. This is local implemen
 Date: 2026-10-09. The user requested that the project be released and asked for its link. Root extended the current hosting phase to include version v0.1.0, a stable-source tag, downloadable archive, and actual public release verification. Earlier observations saying no release was requested describe the earlier scope; this explicit direction supersedes that boundary. The package version is already 0.1.0, so no version migration is needed.
 
 A fresh authenticated API response still reports CLI OAuth scopes gist, read:org, repo without workflow. The existing GitHub device authorization process is still pending; no source upload or branch CI success is inferred. Root continues independent release preparation while that external approval remains required.
+
+## P03-E008 — Source, branches, and safeguards published
+
+Date: 2026-10-09. The user confirmed GitHub device authorization. The refresh process completed, and authenticated API headers now include workflow scope. Source upload succeeded at `9c9f662fe2316aafa227ef9b65898cf395e1b12f`. Root created dev from that master revision and selected dev as the default branch.
+
+GitHub activated owner rule `24799639`, dev safeguards `24799646`, and master safeguards `24799648` from the reviewed JSON files. The response retains exact User `72062250` with PR-only bypass only in the update restriction. Independent safety rules have no bypass actors. Private vulnerability reporting was enabled and read back as true. No release has yet been published.
+
+Initial real push CI passed on master (`https://github.com/Cyber-preacher/kavazi-method/actions/runs/37954651399`) and dev (`https://github.com/Cyber-preacher/kavazi-method/actions/runs/37954691758`). The next branch prepares final release-facing guide text and observed hosting records; those guide links name the intended v0.1.0 destination, while actual tag/asset publication remains a subsequent acceptance step. Functional CI on both PR routes and a negative source-route check follow under active rules.
+
+## P03-E009 — Live PR route finding
+
+Date: 2026-10-09. Root opened release-preparation PR 1 to dev and temporary draft PR 2 from the same topic to master. Both share head `ab57085621f47fedf46b75f99fd464393a28a321`. The trusted route run for PR 1 passed (`37954915631`), while PR 2's run correctly failed (`37954919651`). However, `gh pr checks` for both PRs displayed the most recent failing PR route and the same CI results.
+
+**F031 — required-check context collision:** GitHub associates these checks with the commit, so a single context name reused across different targets contaminates route results. Root assigned target-qualified names (`CI / dev`, `CI / master`, `PR route / dev`, `PR route / master`) to separate the mandatory requirements. A short migration must preserve the legacy checks until the trusted default-branch workflow carries the new ones, then update live safeguards and remove the compatibility aliases. The invalid PR is closed without merging. No protection is disabled to bypass this finding, and no release is published before it is resolved and reviewed.
+
+## P03-E010 — Qualified checks activated
+
+Date: 2026-10-09. Root's resulting local suite ran 113 tests in 18.841 seconds: 112 passed, one optional host socket fixture skipped (`/tmp/kavazi-release-f031-tests.log`). Focused workflow tests verify that shared-head PRs receive different target-specific names and that push/PR target names agree. The independent reviewer inspected the migration and found no additional defect: it emits only the actual target's qualified context, never a skipped opposite-target context.
+
+PR 1 at `7bb8b5d1f2e64f9af20fff71b78d56dfe899a53a` passed actual Python 3.10/3.13 checks, legacy CI, qualified CI / dev, and the trusted legacy PR route. Runs: `37955281760` (validation) and `37955278350` (route). Root merged it using the authenticated owner and the expected head SHA through the normal GitHub merge endpoint; no administrative override flag or disabled safeguards were used. Merge revision: `bb6756ec16a3aa56d96849e00681fd5bb0080fd6`.
+
+The existing safeguard rules `24799646` and `24799648` were updated in place, still active, to require CI / dev plus PR route / dev, and CI / master plus PR route / master, respectively. All remain bound to GitHub Actions app 15368; PR, owner, no-force, and no-delete requirements remain active. The trusted default branch now supplies qualified route checks. The next reviewed change removes temporary aliases and renews the same-head positive/negative observation before the stable promotion and release.
+
+## P03-E011 — Final checks and live target isolation
+
+Date: 2026-10-09. The final local suite ran 113 tests in 24.917 seconds: 112 passed, one host-prohibited socket fixture skipped (`/tmp/kavazi-release-final-tests.log`). Structural validation passed. Root reviewed the final single-job names after compatibility removal, exact embedded programs/tests, effective rules and identities, package boundaries, public guidance, and record interactions. The requested independent continuation encountered an external agent usage limit; no additional independent review is claimed after that interruption. Earlier independent reviews and root's actual renewed inspection remain recorded.
+
+The resulting archive has 26 source-matching members, is byte-identical across two builds, and has SHA-256 `e0ce99bd0197bd8e2445b85897c33024f0b7c37f32ad62cb53d5904aa56c28ad`. Extracted preview made no target writes; setup, installed structural inspection, and license comparison passed.
+
+PR 3 (finalize-release-checks to dev) and temporary PR 4 (the same head to master) share `f91bdb60e172b18d21a2aa67c85024402f4c2160`. Required-check reads showed CI / dev and PR route / dev passing on PR 3 while CI / master passed and PR route / master failed on PR 4. This verifies target-qualified results remain distinct. PR 4 reported BLOCKED and was closed without merging.
+
+A normal attempt to merge PR 3 nevertheless returned HTTP 405, “2 of 2 required status checks are expected.” A direct read found the required checks successful on the head SHA, no checks on the synthetic merge SHA, and GraphQL classified both successful dev checks as required. The cause is not yet established; no safeguard was disabled or bypassed. Root reran the dev PR's actual workflows after closing the conflicting probe to refresh the host's evaluation. Promotion PR 5 is open against dev and will track its eventual corrected head; it is not yet merged or released.
+
+**Host evaluation follow-up:** Both valid-target reruns passed again, but the normal REST merge still reported both checks expected and GitHub CLI also refused the merge. Root will renew the same release content with this evidence-only commit, giving the valid dev request its own head after the closed cross-target probe. No gate, scope, actor permission, or required check is relaxed. The exact cause of the host evaluation discrepancy remains unconfirmed.

@@ -3,6 +3,7 @@ from copy import deepcopy
 import json
 import os
 from pathlib import Path
+import re
 import subprocess
 import sys
 import tempfile
@@ -38,6 +39,33 @@ def pull_event(head="feature/puzzle", base="dev", fork=False):
             "base": {"ref": base, "sha": "b" * 40, "repo": deepcopy(REPOSITORY)},
         },
     }
+
+
+def workflow_check_name(filename, job, base_ref="", ref_name=""):
+    """Resolve the workflow job's small name expression for fixture contexts.
+
+    This checks the checked-in labels, not GitHub's event/check association.
+    Real service behavior requires the live same-head, different-base PR probe.
+    """
+    body = (ROOT / ".github/workflows" / filename).read_text(encoding="utf-8")
+    marker = f"  {job}:\n"
+    if body.count(marker) != 1:
+        raise AssertionError(f"Expected one {job} job")
+    block = body.split(marker, 1)[1].split("\n  ", 1)[0]
+    names = [line.removeprefix("    name: ") for line in block.splitlines()
+             if line.startswith("    name: ")]
+    if len(names) != 1:
+        raise AssertionError("Expected one required-check job name")
+    context = {"github.base_ref": base_ref, "github.ref_name": ref_name}
+
+    def resolve(match):
+        alternatives = [part.strip() for part in match.group(1).split("||")]
+        for name in alternatives:
+            if name not in context:
+                raise AssertionError(f"Unsupported label expression: {name}")
+        return next((context[name] for name in alternatives if context[name]), "")
+
+    return re.sub(r"\$\{\{(.*?)\}\}", resolve, names[0])
 
 
 class PullRequestRouteTests(unittest.TestCase):
@@ -138,8 +166,34 @@ class PullRequestRouteTests(unittest.TestCase):
         event["pull_request"]["user"] = {"login": "contributor"}
         self.assertEqual(0, self.run_route(event).returncode)
 
+    def test_same_commit_prs_to_different_bases_have_independent_check_names(self):
+        contributor = pull_event(base="dev")
+        invalid_release = pull_event(base="master")
+        self.assertEqual(contributor["pull_request"]["head"]["sha"],
+                         invalid_release["pull_request"]["head"]["sha"])
+        results = {}
+        for event in (contributor, invalid_release):
+            base = event["pull_request"]["base"]["ref"]
+            name = workflow_check_name("pr-route.yml", "route", base_ref=base, ref_name=base)
+            self.assertEqual(f"PR route / {base}", name)
+            result = self.run_route(event).returncode == 0
+            results[name] = result
+        # Later failure on the shared SHA cannot replace the dev-specific result.
+        self.assertTrue(results["PR route / dev"])
+        self.assertFalse(results["PR route / master"])
+
 
 class AggregateCITests(unittest.TestCase):
+    def test_push_and_pr_checks_share_their_target_context_without_crossing_bases(self):
+        names_by_base = {}
+        for base in ("dev", "master"):
+            pr_name = workflow_check_name("validate.yml", "ci", base_ref=base, ref_name="42/merge")
+            push_name = workflow_check_name("validate.yml", "ci", ref_name=base)
+            self.assertEqual(pr_name, push_name)
+            self.assertEqual(f"CI / {base}", pr_name)
+            names_by_base[base] = pr_name
+        self.assertNotEqual(names_by_base["dev"], names_by_base["master"])
+
     def test_only_a_successful_matrix_passes_the_required_gate(self):
         for result in ("success", "failure", "cancelled", "skipped", "", "Success", "success\n"):
             with self.subTest(result=result):

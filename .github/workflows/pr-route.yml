@@ -14,7 +14,7 @@ concurrency:
 
 jobs:
   route:
-    name: PR route
+    name: PR route / ${{ github.base_ref }}
     runs-on: ubuntu-latest
     timeout-minutes: 2
     steps:
