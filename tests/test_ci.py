@@ -1,6 +1,5 @@
 """Exercise the exact trusted route and CI aggregate code stored in workflows."""
 from copy import deepcopy
-import ast
 import json
 import os
 from pathlib import Path
@@ -42,20 +41,21 @@ def pull_event(head="feature/puzzle", base="dev", fork=False):
     }
 
 
-def workflow_check_names(filename, base_ref="", ref_name=""):
-    """Resolve the workflows' small label expressions for fixture contexts.
+def workflow_check_name(filename, job, base_ref="", ref_name=""):
+    """Resolve the workflow job's small name expression for fixture contexts.
 
     This checks the checked-in labels, not GitHub's event/check association.
     Real service behavior requires the live same-head, different-base PR probe.
     """
     body = (ROOT / ".github/workflows" / filename).read_text(encoding="utf-8")
-    if body.count("    name: ${{ matrix.check-name }}\n") != 1:
-        raise AssertionError("The required-check job must use its label matrix")
-    rows = [line.split("check-name:", 1)[1].strip() for line in body.splitlines()
-            if line.startswith("        check-name:")]
-    if len(rows) != 1:
-        raise AssertionError("Expected one inline check-name matrix")
-    labels = ast.literal_eval(rows[0])
+    marker = f"  {job}:\n"
+    if body.count(marker) != 1:
+        raise AssertionError(f"Expected one {job} job")
+    block = body.split(marker, 1)[1].split("\n  ", 1)[0]
+    names = [line.removeprefix("    name: ") for line in block.splitlines()
+             if line.startswith("    name: ")]
+    if len(names) != 1:
+        raise AssertionError("Expected one required-check job name")
     context = {"github.base_ref": base_ref, "github.ref_name": ref_name}
 
     def resolve(match):
@@ -65,7 +65,7 @@ def workflow_check_names(filename, base_ref="", ref_name=""):
                 raise AssertionError(f"Unsupported label expression: {name}")
         return next((context[name] for name in alternatives if context[name]), "")
 
-    return [re.sub(r"\$\{\{(.*?)\}\}", resolve, label) for label in labels]
+    return re.sub(r"\$\{\{(.*?)\}\}", resolve, names[0])
 
 
 class PullRequestRouteTests(unittest.TestCase):
@@ -174,10 +174,10 @@ class PullRequestRouteTests(unittest.TestCase):
         results = {}
         for event in (contributor, invalid_release):
             base = event["pull_request"]["base"]["ref"]
-            names = workflow_check_names("pr-route.yml", base_ref=base, ref_name=f"{base}")
-            self.assertIn(f"PR route / {base}", names)
+            name = workflow_check_name("pr-route.yml", "route", base_ref=base, ref_name=base)
+            self.assertEqual(f"PR route / {base}", name)
             result = self.run_route(event).returncode == 0
-            results.update({name: result for name in names})
+            results[name] = result
         # Later failure on the shared SHA cannot replace the dev-specific result.
         self.assertTrue(results["PR route / dev"])
         self.assertFalse(results["PR route / master"])
@@ -187,13 +187,12 @@ class AggregateCITests(unittest.TestCase):
     def test_push_and_pr_checks_share_their_target_context_without_crossing_bases(self):
         names_by_base = {}
         for base in ("dev", "master"):
-            pr_names = workflow_check_names("validate.yml", base_ref=base, ref_name="42/merge")
-            push_names = workflow_check_names("validate.yml", ref_name=base)
-            self.assertEqual(pr_names, push_names)
-            self.assertIn(f"CI / {base}", pr_names)
-            self.assertNotIn("CI / 42/merge", pr_names)
-            names_by_base[base] = {name for name in pr_names if name != "CI"}
-        self.assertFalse(names_by_base["dev"] & names_by_base["master"])
+            pr_name = workflow_check_name("validate.yml", "ci", base_ref=base, ref_name="42/merge")
+            push_name = workflow_check_name("validate.yml", "ci", ref_name=base)
+            self.assertEqual(pr_name, push_name)
+            self.assertEqual(f"CI / {base}", pr_name)
+            names_by_base[base] = pr_name
+        self.assertNotEqual(names_by_base["dev"], names_by_base["master"])
 
     def test_only_a_successful_matrix_passes_the_required_gate(self):
         for result in ("success", "failure", "cancelled", "skipped", "", "Success", "success\n"):

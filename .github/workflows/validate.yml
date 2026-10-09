@@ -38,16 +38,11 @@ jobs:
         run: python scripts/build_plugin.py --output dist/kavazi-method-0.1.0.zip
 
   ci:
-    name: ${{ matrix.check-name }}
+    name: CI / ${{ github.base_ref || github.ref_name }}
     needs: validate
     if: ${{ always() }}
     runs-on: ubuntu-latest
     timeout-minutes: 2
-    strategy:
-      fail-fast: false
-      matrix:
-        # Keep the legacy name only until both protected branches are migrated.
-        check-name: ['CI', 'CI / ${{ github.base_ref || github.ref_name }}']
     steps:
       - name: Require every validation job to pass
         env:
