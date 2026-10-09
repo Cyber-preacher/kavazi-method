@@ -8,6 +8,17 @@ The agent makes routine design decisions and labels its assumptions. You can let
 
 This repository provides a reusable skill, local Python tools, and a portable plugin package. The tools require **Python 3.10+**, use only the standard library, and run without a service account or network connection.
 
+## Get Kavazi
+
+The source repository is [Cyber-preacher/kavazi-method](https://github.com/Cyber-preacher/kavazi-method). For the development checkout:
+
+```bash
+git clone --branch dev https://github.com/Cyber-preacher/kavazi-method.git
+cd kavazi-method
+```
+
+The first tagged release, **0.1.0**, is being prepared; publication and its download are pending. The planned [v0.1.0 release page](https://github.com/Cyber-preacher/kavazi-method/releases/tag/v0.1.0) will provide `kavazi-method-0.1.0.zip`. Once published, download that asset, extract it, and open the extracted directory containing this README. The same setup commands below work from either the source checkout or the extracted package.
+
 ## Start in your project
 
 Use a source checkout or an extracted distribution archive. Run these commands from its top-level directory. Create or select the target project directory first, then preview setup:
@@ -113,6 +124,8 @@ The package declares version `0.1.0`; see [CHANGELOG](CHANGELOG.md) for release 
 Local tools and regression behavior have been exercised on Linux. Windows, macOS, automatic discovery in additional hosts, plugin UI import, and external pilots still need validation. Instructions and stored attestations cannot guarantee agent compliance or authenticate a human approval; maintainers need meaningful review and suitable required CI checks.
 
 To improve Kavazi, use a full source checkout and read [CONTRIBUTING](CONTRIBUTING.md). The checkout's `docs/README.md` maps its design records and history. An archive contains the runtime package and public guides; build tools, tests, and this project's development records stay in the source checkout.
+
+Contributions target `dev`. David Kavazi (`@Cyber-preacher`) merges contributions and promotes this repository's `dev` into `master`. Both routes require the regression, record-validation, archive-build, and pull-request routing checks. The source checkout's `docs/BRANCH_WORKFLOW.md` explains the branch rules and records how to verify their live configuration. Installing the skill does not impose these hosting settings on your project.
 
 Report security concerns through the process in [SECURITY](SECURITY.md).
 

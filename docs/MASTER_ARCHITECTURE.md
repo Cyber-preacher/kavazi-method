@@ -19,6 +19,7 @@ Kavazi lets a developer bring a coding agent into a new or existing repository w
 | R08: MIT licensing | Identify MIT and David Kavazi in metadata; retain the standard notice in the repository, both skills, and plugin archive | Installing Kavazi preserves the target project's license; publication readiness does not establish publication |
 | R09: focused public repository | Keep one distributable skill entry, practical contribution and release guidance, and a documented source layout | Remove redundant wrappers; archive dated sources without changing their observations; keep runtime and template resources self-contained |
 | R10: protected contribution workflow | Accept contributor PRs into `dev`; accept only the same repository's `dev` into `master`; only `Cyber-preacher` merges either branch | Server-side owner gate is independent of mandatory PR/CI rules; no direct pushes, force pushes, or branch deletion; fork contributions remain possible |
+| R11: first public release | Publish v0.1.0 from accepted stable source with a reproducible downloadable archive and actual release URL | Verify tag target, asset bytes, and public availability; distinguish a prepared artifact from a published release |
 | Existing Core: disciplined progression | One created unfinished phase; high-level future roadmap; review, fixes, verification, and fresh review before closure | Required failed/unavailable checks, actionable findings, missing dependencies, or unreconciled documents block closure |
 
 ## Input and assumptions
@@ -54,3 +55,5 @@ The public source repository is `Cyber-preacher/kavazi-method`. `dev` is the con
 Separate the owner-only update restriction from required PRs and checks so the owner still meets the quality gate. A trusted metadata-only workflow validates PR routing; ordinary read-only PR jobs test the proposed merge. Use merge commits for promotion and a temporary sync branch when incorporating master into dev. Do not require the sole owner to approve their own PR.
 
 Files describe desired hosting configuration; only actual GitHub settings and runs establish deployment and enforcement. A repository administrator can change those settings. Required check names bound to GitHub Actions do not pin a particular workflow, so the owner must review workflow changes before merging.
+
+The first release targets version `0.1.0` on accepted master history. Its archive must match the tagged source and retain licenses and usable setup guidance. Verify the published asset and URL before claiming release completion.

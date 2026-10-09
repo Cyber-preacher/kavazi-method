@@ -4,7 +4,7 @@ Record user-visible changes here. Release dates and tags describe publication th
 
 ## Unreleased
 
-The package currently declares `0.1.0`. No public release is recorded yet.
+The first release, `0.1.0`, is being prepared. The [planned release page](https://github.com/Cyber-preacher/kavazi-method/releases/tag/v0.1.0) and `kavazi-method-0.1.0.zip` download remain pending until publication is recorded here.
 
 ### Added
 
@@ -15,6 +15,8 @@ The package currently declares `0.1.0`. No public release is recorded yet.
 - Local commands for inspection, structural validation, fingerprints, phase closure, approval records, and advancement.
 - Regression checks, a CI workflow, and a reproducible distribution archive builder.
 - The MIT license, copyright David Kavazi, and contributor and security-reporting guidance.
+- A contributor-to-`dev` and same-repository `dev`-to-`master` workflow, owner-only merge rules, and a separate trusted pull-request route check.
+- Required CI on both routes, with regression, record-validation, and archive-build checks on Python 3.10 and 3.13; action updates target `dev`.
 
 ### Improved
 

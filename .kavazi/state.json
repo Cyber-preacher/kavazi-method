@@ -590,9 +590,9 @@
     },
     {
       "number": 3,
-      "title": "Protected branch workflow and CI",
-      "status": "planned",
-      "next_action": "Prepare and verify GitHub branch rules, CI, and public source publication.",
+      "title": "Protected branch workflow and first release",
+      "status": "in_progress",
+      "next_action": "Complete GitHub workflow authorization, publish and protect dev/master, observe both PR CI routes, then publish and verify v0.1.0.",
       "required_checks": [
         "regressions",
         "structure"

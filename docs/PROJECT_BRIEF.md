@@ -80,6 +80,10 @@ also make proper ci on dev to master and on branch to dev
 
 When asked for the GitHub repository URL, the user replied: “you have to create it yes”. This authorizes creating the public open-source repository and configuring the requested hosting workflow. The connected and CLI-authenticated GitHub account is `Cyber-preacher` (user ID `72062250`); use that verified account as the sole merger. The agent selected `Cyber-preacher/kavazi-method`, matching the project name, and `dev` as the default contribution branch.
 
+## First release request
+
+The user then requested: “then make sure it is realeased and give me a link”. Publish the first `0.1.0` release with a downloadable, verified package and provide its actual public URL. This extends the current hosting phase to include a release tag and asset publication; it does not waive the preceding branch or CI requirements.
+
 ## Requirement interpretation
 
 | ID | User requirement | Intended outcome |
@@ -94,6 +98,7 @@ When asked for the GitHub repository URL, the user replied: “you have to creat
 | R08 | A proper open-source license; MIT selected, David Kavazi named as copyright holder | Standard MIT notice and metadata retained in the source, archive, and standalone skill installation |
 | R09 | Reread the documentation, delete useless material, and improve file organization where needed | One active skill entry, a clear source layout, preserved dated history, and useful contribution and release guidance |
 | R10 | Create the repository; contributor branches merge to dev, only dev merges to master, and only the owner merges either route | Public GitHub repository, exact protected branch rules, verified owner identity, and required CI for both PR targets |
+| R11 | Publish the release and provide its link | Verified public v0.1.0 release from the stable branch with a source-matching downloadable archive |
 
 The prior shorter canonical chain and initial research proposal remain historical provenance. The latest explicit chain and execution modes govern current changes. Existing Kavazi sequential phases, evidence, mandatory phase reviews, and every-fifth-phase whole-repository review continue to apply.
 
@@ -101,4 +106,4 @@ The prior shorter canonical chain and initial research proposal remain historica
 
 The agent chose the following implementation: keep the local Python 3.10+ standard-library tool and repository-local skill as the initial portable implementation; store the brief and Technical Core as configured canonical paths; use `autonomous` and `phase_checkpoint` as execution-mode names; preserve user input and separately label derived assumptions. Rationale and observed results belong to current-phase evidence.
 
-Autonomy chooses missing design details and continues authorized work. It cannot manufacture credentials, external observations, human approval, permissions, or unlimited host execution. Preserve later user steering and pauses. Phase 02 completed local open-source preparation. Phase 03 creates the public source repository, branch protections, and CI; release tags and asset publication, platform expansion, and external pilots remain outside this request.
+Autonomy chooses missing design details and continues authorized work. It cannot manufacture credentials, external observations, human approval, permissions, or unlimited host execution. Preserve later user steering and pauses. Phase 02 completed local open-source preparation. Phase 03 creates the public source repository, branch protections, CI, and the first public release; platform expansion and external pilots remain outside this request.
