@@ -70,9 +70,9 @@ The two safeguard rulesets have no bypass actors. The owner exception allows Dav
 
 Formal approving-review count is zero. David cannot approve his own pull requests, so a mandatory self-approval would block owner-authored changes. The restricted update rule controls who merges; David still reviews the change before deciding. [CODEOWNERS](../.github/CODEOWNERS) requests his review and communicates responsibility. It does not grant or restrict write access by itself.
 
-The `CI` aggregate succeeds only after Linux jobs on Python 3.10 and 3.13 pass the regression suite, Kavazi structure check, and plugin archive build. It fails if a required job fails, is cancelled, or is skipped. Both pull request routes receive these checks; pushes to `dev` and `master` also validate the resulting branch revisions.
+The target-specific `CI` aggregate succeeds only after Linux jobs on Python 3.10 and 3.13 pass the regression suite, Kavazi structure check, and plugin archive build. It fails if a required job fails, is cancelled, or is skipped. Both pull request routes receive these checks; pushes to `dev` and `master` also validate the resulting branch revisions.
 
-`PR route` runs in the target workflow context and reads pull request metadata without checking out or running contributor code. It allows contributor branches into `dev`, and only this repository's `dev` into `master`. The ordinary test workflow runs proposed code with read-only permissions and no repository secrets. Every action is pinned to a commit; Dependabot opens action updates against `dev`.
+The target-specific `PR route` check runs in the target workflow context and reads pull request metadata without checking out or running contributor code. It allows contributor branches into `dev`, and only this repository's `dev` into `master`. The ordinary test workflow runs proposed code with read-only permissions and no repository secrets. Every action is pinned to a commit; Dependabot opens action updates against `dev`.
 
 The [Actions event policy](../.github/actions-policy.json) permits `push`, `pull_request`, and `pull_request_target`. New workflow event types need a deliberate policy change and live verification. When maintaining the policy, compare the existing server record with this file and update that record; avoid creating duplicate policies. An allowed event alone does not make a workflow safe. Keep `pull_request_target` limited to trusted metadata handling, with no checkout or execution of contributor code.
 
@@ -132,9 +132,9 @@ Observe a topic-to-`dev` request and a same-repository `dev`-to-`master` promoti
 
 ## Hosting observations
 
-The public repository [Cyber-preacher/kavazi-method](https://github.com/Cyber-preacher/kavazi-method) was created on 2026-10-09 with repository ID `1412079071`. The Actions event policy was applied with active policy ID `6998`. Branch publication, active branch-rule IDs, and remote CI results remain to be established by live execution. The current [Phase 03 evidence](phases/phase-03/EVIDENCE.md) records those observations as they become available.
+The public [Cyber-preacher/kavazi-method](https://github.com/Cyber-preacher/kavazi-method) repository was created on 2026-10-09 (ID `1412079071`). Both `dev` and `master` are published, with `dev` as the default branch. Rules `24799639` (owner updates), `24799646` (dev safeguards), and `24799648` (master safeguards) are active. GitHub accepted the exact owner User ID and PR-only bypass. Actions event policy `6998` is active, workflow tokens default to read, and private vulnerability reporting is enabled.
 
-GitHub also accepted all three branch rule payloads with exact-user bypass: owner rule `24799639`, dev safeguards `24799646`, and master safeguards `24799648`. They are staged with **disabled** enforcement while initial source publication waits for the CLI workflow authorization. This avoids claiming protection or blocking initial branch creation before CI exists. Activation and live PR checks remain pending.
+Initial push validation passed on both branches. Actual PR-route acceptance and the release publication are recorded as they occur in [Phase 03 evidence](phases/phase-03/EVIDENCE.md). This setup does not demonstrate a merge attempt made with another person's credentials.
 
 ## GitHub references
 

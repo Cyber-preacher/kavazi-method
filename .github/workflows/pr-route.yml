@@ -14,9 +14,14 @@ concurrency:
 
 jobs:
   route:
-    name: PR route
+    name: ${{ matrix.check-name }}
     runs-on: ubuntu-latest
     timeout-minutes: 2
+    strategy:
+      fail-fast: false
+      matrix:
+        # Keep the legacy name only until both protected branches are migrated.
+        check-name: ['PR route', 'PR route / ${{ github.base_ref }}']
     steps:
       # This runs in the trusted base repository. Never check out or execute PR code
       # here, and never interpolate PR text into a script or expression.

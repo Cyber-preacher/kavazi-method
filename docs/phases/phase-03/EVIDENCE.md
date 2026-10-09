@@ -67,3 +67,17 @@ Actual reviewer model and effort settings are unobserved. This is local implemen
 Date: 2026-10-09. The user requested that the project be released and asked for its link. Root extended the current hosting phase to include version v0.1.0, a stable-source tag, downloadable archive, and actual public release verification. Earlier observations saying no release was requested describe the earlier scope; this explicit direction supersedes that boundary. The package version is already 0.1.0, so no version migration is needed.
 
 A fresh authenticated API response still reports CLI OAuth scopes gist, read:org, repo without workflow. The existing GitHub device authorization process is still pending; no source upload or branch CI success is inferred. Root continues independent release preparation while that external approval remains required.
+
+## P03-E008 — Source, branches, and safeguards published
+
+Date: 2026-10-09. The user confirmed GitHub device authorization. The refresh process completed, and authenticated API headers now include workflow scope. Source upload succeeded at `9c9f662fe2316aafa227ef9b65898cf395e1b12f`. Root created dev from that master revision and selected dev as the default branch.
+
+GitHub activated owner rule `24799639`, dev safeguards `24799646`, and master safeguards `24799648` from the reviewed JSON files. The response retains exact User `72062250` with PR-only bypass only in the update restriction. Independent safety rules have no bypass actors. Private vulnerability reporting was enabled and read back as true. No release has yet been published.
+
+Initial real push CI passed on master (`https://github.com/Cyber-preacher/kavazi-method/actions/runs/37954651399`) and dev (`https://github.com/Cyber-preacher/kavazi-method/actions/runs/37954691758`). The next branch prepares final release-facing guide text and observed hosting records; those guide links name the intended v0.1.0 destination, while actual tag/asset publication remains a subsequent acceptance step. Functional CI on both PR routes and a negative source-route check follow under active rules.
+
+## P03-E009 — Live PR route finding
+
+Date: 2026-10-09. Root opened release-preparation PR 1 to dev and temporary draft PR 2 from the same topic to master. Both share head `ab57085621f47fedf46b75f99fd464393a28a321`. The trusted route run for PR 1 passed (`37954915631`), while PR 2's run correctly failed (`37954919651`). However, `gh pr checks` for both PRs displayed the most recent failing PR route and the same CI results.
+
+**F031 — required-check context collision:** GitHub associates these checks with the commit, so a single context name reused across different targets contaminates route results. Root assigned target-qualified names (`CI / dev`, `CI / master`, `PR route / dev`, `PR route / master`) to separate the mandatory requirements. A short migration must preserve the legacy checks until the trusted default-branch workflow carries the new ones, then update live safeguards and remove the compatibility aliases. The invalid PR is closed without merging. No protection is disabled to bypass this finding, and no release is published before it is resolved and reviewed.
