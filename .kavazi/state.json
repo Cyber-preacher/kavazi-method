@@ -591,13 +591,95 @@
     {
       "number": 3,
       "title": "Protected branch workflow and first release",
-      "status": "in_progress",
-      "next_action": "Complete GitHub workflow authorization, publish and protect dev/master, observe both PR CI routes, then publish and verify v0.1.0.",
+      "status": "complete",
+      "next_action": "Derive only the immediately next phase from accepted evidence.",
       "required_checks": [
         "regressions",
         "structure"
       ],
-      "closure": null
+      "closure": {
+        "baseline": "8116b6e0f37dbba9a59c13ecccb59d833b71b62649d23e3b3818a6fe1837e91b",
+        "acceptance": {
+          "evidence": "P03-E012",
+          "summary": "Public owner-protected dev/master workflow and successful required CI are observed; v0.1.0 is published from accepted master and its public ZIP/checksum match source."
+        },
+        "checks": [
+          {
+            "id": "regressions",
+            "result": "passed",
+            "evidence": "P03-E011"
+          },
+          {
+            "id": "structure",
+            "result": "passed",
+            "evidence": "P03-E012"
+          }
+        ],
+        "reviews": [
+          {
+            "kind": "phase",
+            "reviewer": "Root live route experiment; previous independent local review by oss_audit and branch_policy_review",
+            "fresh": false,
+            "coverage": [
+              "All delivered workflows, embedded programs, context and policy regressions, exact actor/rule scopes, bypass boundaries and GitHub settings",
+              "Positive/negative live PR observations, protected merges, check-name migration and documented host evaluation limitation",
+              "Public and agent guidance, canonical masters, current phase and preserved phase history",
+              "Inherited runtime/validation/packaging interactions, source export, release tag, archive contents, extracted setup and public asset verification"
+            ],
+            "findings": [
+              {
+                "id": "F031",
+                "status": "open",
+                "evidence": "P03-E009"
+              }
+            ],
+            "refactoring": "Target-specific required contexts are necessary after the empirical cross-target name collision; preserve safeguards during migration.",
+            "evidence": "P03-E009"
+          },
+          {
+            "kind": "phase",
+            "reviewer": "oss_audit independent migration inspection; actual model/effort unobserved",
+            "fresh": false,
+            "coverage": [
+              "All delivered workflows, embedded programs, context and policy regressions, exact actor/rule scopes, bypass boundaries and GitHub settings",
+              "Positive/negative live PR observations, protected merges, check-name migration and documented host evaluation limitation"
+            ],
+            "findings": [
+              {
+                "id": "F031",
+                "status": "resolved",
+                "evidence": "P03-E010"
+              }
+            ],
+            "refactoring": "Reuse the exact workflow programs while emitting target-specific names; remove temporary aliases after migration.",
+            "evidence": "P03-E010"
+          },
+          {
+            "kind": "phase",
+            "reviewer": "Root fresh full-scope final release and handoff review; actual model/effort unobserved",
+            "fresh": true,
+            "coverage": [
+              "All delivered workflows, embedded programs, context and policy regressions, exact actor/rule scopes, bypass boundaries and GitHub settings",
+              "Positive/negative live PR observations, protected merges, check-name migration and documented host evaluation limitation",
+              "Public and agent guidance, canonical masters, current phase and preserved phase history",
+              "Inherited runtime/validation/packaging interactions, source export, release tag, archive contents, extracted setup and public asset verification"
+            ],
+            "findings": [
+              {
+                "id": "F031",
+                "status": "resolved",
+                "evidence": "P03-E012"
+              }
+            ],
+            "refactoring": "Final single-target check names remove compatibility duplication. Full resulting scope and inherited interactions reveal no additional justified algorithmic refactor; observed host limitation is documented.",
+            "evidence": "P03-E012"
+          }
+        ],
+        "documentation": {
+          "evidence": "P03-E012",
+          "summary": "User release direction, masters, branch guide, public package guides, phase work/results and limitations are reconciled; prior phase acceptance remains historical and unchanged."
+        }
+      }
     }
   ]
 }

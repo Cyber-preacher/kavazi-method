@@ -134,7 +134,7 @@ Observe a topic-to-`dev` request and a same-repository `dev`-to-`master` promoti
 
 The public [Cyber-preacher/kavazi-method](https://github.com/Cyber-preacher/kavazi-method) repository was created on 2026-10-09 (ID `1412079071`). Both `dev` and `master` are published, with `dev` as the default branch. Rules `24799639` (owner updates), `24799646` (dev safeguards), and `24799648` (master safeguards) are active. GitHub accepted the exact owner User ID and PR-only bypass. Actions event policy `6998` is active, workflow tokens default to read, and private vulnerability reporting is enabled.
 
-Initial push validation passed on both branches. Actual PR-route acceptance and the release publication are recorded as they occur in [Phase 03 evidence](phases/phase-03/EVIDENCE.md). This setup does not demonstrate a merge attempt made with another person's credentials.
+Push and pull-request validation passed for both branches. The invalid topic-to-master route failed while the dev-specific required checks remained green; the accepted contributor and dev-to-master requests merged under active rules. The [v0.1.0 release](https://github.com/Cyber-preacher/kavazi-method/releases/tag/v0.1.0) and downloaded archive were verified. [Phase 03 evidence](phases/phase-03/EVIDENCE.md) records revisions, runs, the shared-head host-evaluation limitation, and the final results. This setup does not demonstrate a merge attempt made with another person's credentials.
 
 ## GitHub references
 

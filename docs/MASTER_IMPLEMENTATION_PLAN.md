@@ -2,7 +2,7 @@
 
 This document sequences development. It follows [Master Technical Core](MASTER_TECHNICAL_CORE.md) under the [Core](../CORE_KAVAZI_METHOD.md). The [Project Brief](PROJECT_BRIEF.md) records the user direction behind the plan.
 
-Phase 01 delivered the local plug-and-play package and the human/agent editorial pass. Phase 02 prepared the source and archive for open-source use: MIT licensing, a focused layout, contributor guidance, release checks, and a fix for source-checkout phase creation. Phase 03 creates the public repository, protected branch routes, required CI, and first v0.1.0 release. Additional hosts and external pilots remain future directions requiring execution evidence.
+Phase 01 delivered the local plug-and-play package and the human/agent editorial pass. Phase 02 prepared the source and archive for open-source use: MIT licensing, a focused layout, contributor guidance, release checks, and a fix for source-checkout phase creation. Phase 03 delivered the public repository, protected branch routes, required CI, and first v0.1.0 release. Additional hosts and external pilots remain future directions requiring execution evidence.
 
 The [initial proposal](history/initial-proposal.md) remains historical research. The user-authorized release preparation replaces the earlier agent-derived Phase 02 host-expansion candidate; stable numbers and accepted Phase 01 history are preserved.
 
@@ -11,7 +11,7 @@ The [initial proposal](history/initial-proposal.md) remains historical research.
 |---|---|---|---|
 | 01 | Plug-and-play local MVP | complete | Derive only the immediately next phase from accepted evidence. |
 | 02 | Open-source release preparation | complete | Derive only the immediately next phase from accepted evidence. |
-| 03 | Protected branch workflow and first release | in&#95;progress | Complete GitHub workflow authorization, publish and protect dev/master, observe both PR CI routes, then publish and verify v0.1.0. |
+| 03 | Protected branch workflow and first release | complete | Derive only the immediately next phase from accepted evidence. |
 <!-- kavazi:register:end -->
 
 ## Current package and progression
